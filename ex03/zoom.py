@@ -17,12 +17,17 @@ def main():
 
     gray_array = np.array(image)
 
-    # print("gray_array:", list(map(lambda gray: list([gray]), gray_array)))
+    lst = gray_array.tolist()
+    nlst = []
+    for x, item in enumerate(lst):
+        nlst.insert(x, [])
+        for y, unit in enumerate(item):
+            nlst[x].insert(y, [unit])
 
-    nlist = gray_array.tolist()
+    narray = np.array(nlst)
+    print(f"New shape after slicing: {tuple((gray_array.shape[0], gray_array.shape[1], 3 - gray_array.ndim))} or {gray_array.shape}")
 
-    image.save('output.jpg', format='JPEG')
-    
+    print(nlst)
 
     # Convert the Pillow image to a NumPy array
     data_np = np.array(image)
@@ -34,7 +39,7 @@ def main():
     img_ax = ax.imshow(data_np, cmap='gray')
 
     # Save the figure (optional)
-    fig.savefig('lili.jpeg', format='JPEG')
+    fig.savefig('output.jpeg', format='JPEG')
 
 if __name__ == "__main__":
     try:

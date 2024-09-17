@@ -12,10 +12,8 @@ def slice_me_3d(family: list, start_x: int, end_x: int, start_y: int, end_y: int
         ret = family[start_x:end_x]
         for x, row in enumerate(ret):
             ret[x] = row[start_y:end_y]
-
     else:
         raise AssertionError("Error: parameter is not a list")
-        return None
     return ret
 
 def create_image(barray: list) -> Image:
@@ -55,6 +53,7 @@ def ft_load(path: str) -> bytearray:
         for item in items:
             i += 1
         print(string, (height, width, i))
+
     except AssertionError as e:
         raise AssertionError("Error: failed to open file")
     return barray
